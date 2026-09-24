@@ -37,6 +37,8 @@ public class Ejercicio1 {
             BufferedWriter escribir= new BufferedWriter(new FileWriter(fichero,true));
             escribir.write(frases);
             escribir.newLine();
+            escribir.close();
+
         }}
 
     }
