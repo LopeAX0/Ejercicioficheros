@@ -16,14 +16,10 @@ public class ejercicio4 {
                 BufferedReader contarlinea =new BufferedReader(new FileReader(fichero));
                 String linea;
                 int cont=0;
-
-                
                 while ((linea= contarlinea.readLine())!=null){
                     cont++;
                 }
                 String [] ultimo=new String[cont];
-
-
                 BufferedReader leer =new BufferedReader(new FileReader(fichero));
                 int posicion = cont - 1;
                 while((linea=leer.readLine())!=null){
@@ -33,12 +29,6 @@ public class ejercicio4 {
                 for(int i=0;i< ultimo.length;i++){
                     System.out.println(ultimo[i]);
                 }
-
-
-
-
-
-
             }
     }
 }
