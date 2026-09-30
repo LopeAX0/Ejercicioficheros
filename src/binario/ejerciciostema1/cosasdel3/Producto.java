@@ -1,6 +1,8 @@
 package binario.ejerciciostema1.cosasdel3;
 
-public class Producto {
+import java.io.Serializable;
+
+public class Producto implements Serializable {
     String nombre;
     double precio;
     int stock;
