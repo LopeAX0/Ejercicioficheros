@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.Scanner;
 
-public class ejemploseek {
+public class ejemplo_sobre_escribir {
     private static int po=36;
     static void main() {
         File directorio=new File("src/accesoaleatorio/ejemplos/archivos");
@@ -16,25 +16,21 @@ public class ejemploseek {
         System.out.println("Porfavor ingrese un id para buscar");
         Scanner sc=new Scanner(System.in);
         int opcion=sc.nextInt();
+        System.out.println("Ingrese el nuevo salario");
+        double nuevo=sc.nextDouble();
 
-        try(RandomAccessFile leer=new RandomAccessFile(archivo,"r")){
+        try(RandomAccessFile leer=new RandomAccessFile(archivo,"rw")){
             long posicion=(long) (opcion-1) * po;
             if (posicion>=leer.length()){
                 System.out.println("El empleado no  existe");
             }
-            leer.seek(posicion);
-            int id= leer.readInt();
-            char[] apellido=new char[10];
-            for(int i =0;i<apellido.length;i++){
-                apellido[i]=leer.readChar();
-            }
-            int departamento=leer.readInt();
-            double salario= leer.readDouble();
-
-            System.out.println("Id: "+id);
-            System.out.println("Apellido: "+new String(apellido).trim());
-            System.out.println("Departamento: "+departamento);
-            System.out.println("Salario: " +salario );
+            leer.seek(posicion+28);
+            System.out.println("Salario antiguo "+leer.readDouble());
+            leer.seek(posicion+28);
+            leer.writeDouble(nuevo);
+            leer.seek(posicion+28);
+            System.out.println("Salario nuevo: "+leer.readDouble());
+            System.out.println("salario actualizado correctamente");
 
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
